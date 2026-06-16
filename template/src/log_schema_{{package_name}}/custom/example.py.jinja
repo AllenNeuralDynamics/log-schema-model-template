@@ -1,6 +1,6 @@
 from pydantic import Field
 
-from log_schema_template.generated.example import ExampleLogFields
+from src.log_schema_{{ package_name }}.generated.example import ExampleLogFields
 
 
 class ExampleLogFieldsCustom(ExampleLogFields):

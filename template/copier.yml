@@ -1,0 +1,22 @@
+# --- Settings --------------------------------------------------------------
+# _subdirectory: template       # template files live in ./template (everything
+#                               # outside it, like this file, is NOT copied out)
+_templates_suffix: .jinja     # files ending in .jinja are rendered; the
+                              # suffix is stripped from the output filename
+
+# --- Questions -------------------------------------------------------------
+
+package_name:
+  type: str
+  help: Python import name — the folder created under src/
+  # Computed default: turn the project name into a valid identifier.
+  default: "{{ project_name | lower | replace('-', '_') | replace(' ', '_') }}"
+
+# --- Post-generation tasks (run in the generated dir; need --trust) --------
+# _tasks:
+#   - "git init -q"
+#   - "git add -A"
+
+# --- Friendly next steps (shown after copy; no --trust needed) -------------
+_message_after_copy: |
+  Created {{ package_name }}  (import name: log_schema{{ package_name }})

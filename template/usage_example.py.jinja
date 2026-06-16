@@ -1,8 +1,8 @@
 import log_schema
 import logging
-from log_schema_template import  list_configs, get_config
-from log_schema_template.generated.example import ExampleLogFields
-from log_schema_template.custom.example import ExampleLogFieldsCustom
+from log_schema_{{ package_name }} import  list_configs, get_config
+from log_schema_{{ package_name }}.generated.example import ExampleLogFields
+from log_schema_{{ package_name }}.custom.example import ExampleLogFieldsCustom
 
 
 print(list_configs())
