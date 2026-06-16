@@ -1,0 +1,16 @@
+[project]
+name = "log-schema-template"
+version = "0.1.0"
+description = "Library containing models/schemas representing log fields"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "copier>=9.10.3",
+    "datamodel-code-generator>=0.45.0",
+    "log-schema>=0.2.10.dev1",
+    "pydantic>=2.13.4",
+]
+
+[build-system]
+requires = ["uv-build>=0.1.0,<1.0.0"]
+build-backend = "uv_build"
