@@ -1,0 +1,34 @@
+# --- Settings --------------------------------------------------------------
+
+_templates_suffix: .jinja
+
+# --- Questions -------------------------------------------------------------
+
+project_name:
+  type: str
+  help: Name of the project - used in the README (Log Schema <project_name>).
+
+package_name:
+  type: str
+  help: Python import name (folder created under src/). 
+  # Computed default: turn the project name into a valid identifier.
+  default: "{{ project_name | lower | replace('-', '_') | replace(' ', '_') }}"
+
+# --- Post-generation tasks (run in the generated dir; need --trust) --------
+
+# _tasks:
+#   - "git commit -am 'Initial commit'"
+
+# --- Next steps message ----------------------------------------------------
+
+_message_after_copy: |
+  ################################################################################
+  Created Log Schema - {{ project_name }} (import name: log_schema_{{ package_name }})
+
+  Next steps: 
+  1. uv sync
+  2. Read new README.md for usage instructions.
+  3. Can test with uv run usage_example.py
+
+  ################################################################################
+
