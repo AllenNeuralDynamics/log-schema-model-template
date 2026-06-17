@@ -15,7 +15,7 @@ handlers:
     class: logging.FileHandler
     formatter: default
     level: INFO
-    filename: micestro.log
+    filename: example.log
 
 loggers:
   "":
