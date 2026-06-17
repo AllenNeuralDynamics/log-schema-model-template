@@ -23,7 +23,7 @@ package_name:
 
 _message_after_copy: |
   ################################################################################
-  Created Log Schema - {{ project-name }} (import name: log_schema_{{ package_name }})
+  Created Log Schema - {{ project_name }} (import name: log_schema_{{ package_name }})
 
   Next steps: 
   1. uv sync
