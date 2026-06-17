@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/AllenNeuralDynamics/aind-log-utils/main/schema/logs.json",
+  "title": "Example log fields",
+  "description": "Structure and validation rules for a log entry emitted by software",
+  "x-schema-version": "1.0.0",
+  "type": "object",
+  "required": ["timestamp", "level"],
+  "additionalProperties": false,
+
+  "properties": {
+    "timestamp": {
+      "title": "Timestamp",
+      "description": "The date and time at which the log entry was created, expressed in ISO 8601 / RFC 3339 format. The value MUST be in UTC and MUST include the 'Z' timezone designator or a '+00:00' offset. Sub-second precision (up to microseconds) is recommended.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2026-02-09T21:19:24.061270Z",
+        "2026-01-01T00:00:00Z",
+        "2026-02-09T21:19:24.061270+00:00"
+      ]
+    },
+
+    "level": {
+      "title": "Log Level",
+      "description": "The severity level of the log entry. Use the string identifier — never the numeric value. Levels mirror the Python standard logging library:\n  DEBUG (10)    — Detailed diagnostics, useful only during development.\n  INFO (20)     — Significant business or operational events (default level).\n  WARNING (30)  — Unexpected situations that may indicate future problems.\n  ERROR (40)    — Failures that affect a specific operation but not the whole program.\n  CRITICAL (50) — Failures that affect the entire program or require immediate attention.",
+      "type": "string",
+      "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+      "examples": ["INFO", "DEBUG", "WARNING", "ERROR", "CRITICAL"]
+    },
+
+    "message": {
+      "title": "Message",
+      "description": "A human-readable description of the event being logged. Messages should be specific, self-contained, and actionable. Include relevant identifiers and error details directly in the string rather than relying on other fields to provide context. Prefer 'Failed to save subject info: field experiment_id is missing' over 'Save failed'.",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "Starting program",
+        "Connecting to database",
+        "Successfully retrieved data",
+        "Closing program",
+        "Failed to save subject info: field 'experiment_id' is missing",
+        "Session recorded",
+        "Failed to save session: could not connect to database"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "$comment": "Minimal required-only log entry",
+      "timestamp": "2026-02-09T21:19:24.061270Z",
+      "level": "INFO",
+      "message": "Starting program"
+    },
+    {
+      "$comment": "Sequence of minimal JSONL-style entries (each would be one line in a .jsonl file)",
+      "timestamp": "2026-02-09T21:19:24.061270Z",
+      "level": "INFO",
+      "message": "Connecting to database"
+    }
+  ]
+}

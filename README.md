@@ -1,7 +1,6 @@
-# Log Schema Template
+# Log Schema - Code Ocean
 
-Run the following to setup the log-schema-model library.
+This repository is for storing the various models/schemas used for a specific suite of software.
 
-```
-uvx copier copy template .
-```
+If there are a set of fields you consistently add to your logs for a suite of software/services you own, these fields can be extrapolated here and use in conjunction with the ``log-schema`` utility library to provision your software with the correct logs.  
+
